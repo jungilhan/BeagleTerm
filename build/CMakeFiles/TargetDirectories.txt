@@ -1,0 +1,10 @@
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/projects/BeagleTermPlugin/PluginAuto/CMakeFiles/BTP_PluginAuto.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/projects/BeagleTermPlugin/CMakeFiles/BeagleTermPlugin.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/cmake_common/CMakeFiles/FireBreath_Cmake.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/NpapiCore/CMakeFiles/NpapiCore.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/PluginCore/CMakeFiles/PluginCore.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/ScriptingCore/CMakeFiles/ScriptingCore.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/unittest-cpp/UnitTest++/CMakeFiles/UnitTest++.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/ScriptingCoreTest/CMakeFiles/UnitTest_ScriptingCore.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/boost/libs/system/CMakeFiles/boost_system.dir
+/home/jihan/Workspace/MonkeyLabs/BeagleTerm/build/boost/libs/thread/CMakeFiles/boost_thread.dir

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>BeagleTerm - Chrome based SSH client</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+	
+		h1 {
+			color: lightgray;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: "맑은 고딕",  sans-serif;
+			color: gray;
+		}
+
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+
+		.title {
+			color: gray;
+			font-size: 3em;		
+			font-weight: bold;
+			vertical-align: text-bottom;			
+			padding-right: 10px;
+			display: inline-block;			
+			zoom: 1;
+			*display: inline;
+		}
+
+		.sub-title {
+			font-size: .8em;
+			color: #4EBAFF;
+			font-weight: bold;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}		
+	</style>
+	
+	<script src="jquery.min.js" type="text/javascript"></script>
+	<script src="VT100.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//console.log("[beagleTerm.html] Ready!");		
+			
+			
+			terminal = new VT100(140, 100, 'term');
+			div = document.getElementById('term');
+			terminal.curs_set(1, true, div);
+			
+			/*
+			terminal = new console.Console("beagle-terminal", "");
+			terminal.resize(40, 20);
+			var index = 0;
+			setInterval(function() {
+				terminal.write("TEST");
+				index++
+				
+				if (index == 300) {
+					terminal.clear();
+					index = 0;
+				}
+			}, 10);			
+			*/
+			
+						
+			//terminal.clear();
+			/*
+			$("body").keypress(function(event) {
+				//console.log("[keypress] " + event.keyCode);
+				switch (event.keyCode) {				
+				case 0x0D:				
+					break;
+				}
+				beagleTerm().write(event.keyCode);									
+			});			
+			
+			$("body").keyup(function(event) {
+				switch (event.keyCode) {
+				case 0x08:
+					beagleTerm().write(0x7F);
+				case 37: // left
+					beagleTerm().write(0x1B);
+					beagleTerm().write(0x5B);
+					beagleTerm().write(0x44);					
+					break;
+				case 38: // up
+					beagleTerm().write(0x1B);
+					beagleTerm().write(0x5B);
+					beagleTerm().write(0x41);
+					break;
+				case 39: // right
+					beagleTerm().write(0x1B);
+					beagleTerm().write(0x5B);
+					beagleTerm().write(0x43);										
+					break;
+				case 40: // down
+					beagleTerm().write(0x1B);
+					beagleTerm().write(0x5B);
+					beagleTerm().write(0x42);
+					break;
+				}
+			});
+			*/			
+		});
+		
+		var beagleTerm = function() {
+			return document.getElementById("beagle-plugin");
+		}
+		
+		var pluginLoad = function() {
+			var username = getUrlVars()["username"];
+			var host = getUrlVars()["host"];
+			var ret = beagleTerm().connect(username + "@" + host, "22");  
+			var received_pass = prompt("Insert password"," ");
+			
+			// #2 인증
+			var retCode = beagleTerm().userauthPassword(received_pass);
+			if (retCode != -1) {								
+				
+				pollingTimer = setInterval(function() {
+					var stream = beagleTerm().read();
+			
+					if (stream == "SSH_CHANNEL_DISCONNECTED") {
+						alert("[ERRPR] SSH_CHANNEL_DISCONNECTED");
+						clearInterval(pollingTimer);
+						return;
+					}
+				
+					terminal.write(stream);
+				}, 100);		
+			} else {
+				alert("Permission denied, please try again.");
+			}	
+		}
+		
+		// Read a page's GET URL variables and return them as an associative array.
+		var getUrlVars = function() {
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			
+			for(var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			
+			return vars;
+		}		
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">Beagle Term - Test Suit</div>			
+			<div class="sub-title">Google Chrome based SSH client</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+		
+		<object id="beagle-plugin" type="application/x-beagletermplugin" width="0" height="0">
+			<param name="onload" value="pluginLoad" />
+		    Beagle Term 플러그인을 로드하지 못했습니다.		    
+		</object>
+		
+		<div id="term"></div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+{
+	"name": "Beagle Term",
+	"description" : "Chrome based SSH clinet",
+	"version": "1.0",
+	"homepage_url": "http://jungilhan.github.com/beagleterm/index.html",
+	"background_page": "background.html",
+	"omnibox": { "keyword" : "ssh" },
+	"icons":{
+		"16" : "image/beagleTerm16x16.png",
+		"24" : "image/beagleTerm24x24.png",
+		"48" : "image/beagleTerm48x48.png",
+		"128" : "image/beagleTerm128x128.png"
+	},  
+	"plugins": [
+		{ "path": "lib/npBeagleTermPlugin.so", "public": true}
+	],
+	"permissions":[
+		"tabs"
+	]
+}
+

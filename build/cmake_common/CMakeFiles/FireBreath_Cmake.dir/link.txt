@@ -1,0 +1,2 @@
+/usr/bin/ar cr libFireBreath_Cmake.a  CMakeFiles/FireBreath_Cmake.dir/dummy.cpp.o
+/usr/bin/ranlib libFireBreath_Cmake.a

@@ -1,0 +1,66 @@
+HKCR {
+    BeagleTerm.BeagleTermPlugin.1 = s 'SSH plugin for beagle term' {
+        CLSID = s '{d655bd62-630d-5993-9ab6-62b6f7b355d7}'
+    }
+    BeagleTerm.BeagleTermPlugin = s 'SSH plugin for beagle term' {
+        CLSID = s '{d655bd62-630d-5993-9ab6-62b6f7b355d7}'
+        CurVer = s 'BeagleTerm.BeagleTermPlugin.1'
+    }
+    NoRemove CLSID {
+        ForceRemove {d655bd62-630d-5993-9ab6-62b6f7b355d7} = s 'SSH plugin for beagle term' {
+            ProgID = s 'BeagleTerm.BeagleTermPlugin.1'
+            VersionIndependentProgID = s 'BeagleTerm.BeagleTermPlugin'
+            ForceRemove 'Programmable'
+            InprocServer32 = s '%MODULE%' {
+                val ThreadingModel = s '%THREADING%'
+            }
+            val AppID = s '%APPID%'
+            ForceRemove 'Control'
+            'MiscStatus' = s '0' {
+                '1' = s '131473'
+            }
+            'TypeLib' = s '%LIBID%'
+            'Version' = s '1'
+        }
+    }
+    NoRemove MIME {
+        NoRemove Database {
+            NoRemove 'Content Type' {
+                'application/x-beagletermplugin' = s 'SSH plugin for beagle term' {
+                    val Extension = s ''
+                    val CLSID = s '{d655bd62-630d-5993-9ab6-62b6f7b355d7}'
+                }
+            }
+        }
+    }            
+}
+HKCU {
+    NoRemove Software {
+        NoRemove Microsoft {
+            NoRemove Windows {
+                NoRemove CurrentVersion {
+                    NoRemove Ext {
+                        NoRemove PreApproved {
+                            ForceRemove '{d655bd62-630d-5993-9ab6-62b6f7b355d7}'
+                        }
+                        NoRemove Stats {
+                            ForceRemove '{d655bd62-630d-5993-9ab6-62b6f7b355d7}' {
+                                iexplore {
+                                    AllowedDomains {
+                                        '*'
+                                    }
+                                    val Count = d ''
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        NoRemove MozillaPlugins {
+            ForceRemove 'jungilhan.github.com/BeagleTermPlugin' {
+                val Path = s '%MODULE%'
+            }
+        }
+    }
+}

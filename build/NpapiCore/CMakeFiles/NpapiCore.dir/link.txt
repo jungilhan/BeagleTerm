@@ -1,0 +1,2 @@
+/usr/bin/ar cr libNpapiCore.a  CMakeFiles/NpapiCore.dir/NPJavascriptObject.cpp.o CMakeFiles/NpapiCore.dir/NPObjectAPI.cpp.o CMakeFiles/NpapiCore.dir/NpapiBrowserHost.cpp.o CMakeFiles/NpapiCore.dir/NpapiPlugin.cpp.o CMakeFiles/NpapiCore.dir/NpapiPluginModule.cpp.o CMakeFiles/NpapiCore.dir/NpapiPluginModule_NPP.cpp.o CMakeFiles/NpapiCore.dir/NpapiStream.cpp.o CMakeFiles/NpapiCore.dir/NpapiTypes.cpp.o
+/usr/bin/ranlib libNpapiCore.a

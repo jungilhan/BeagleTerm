@@ -5,7 +5,7 @@
 			function(text) {
 				chrome.tabs.getSelected(null, function(tab) {
 						var url = text.split("@");
-						chrome.tabs.update(tab.id, {url: "beagleTerm.html?username=" + url[0] + "&" + "host=" + url[1]});
+						chrome.tabs.update(tab.id, {url: "beagleTerm.html?username=" + url[0] + "&" + "host=" + url[1], selected: true});
 						console.log("[background.html] User: " + url[0] + " Host: " + url[1]);						
 				});			
 			}
